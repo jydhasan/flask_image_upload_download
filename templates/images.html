@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Images</title>
+</head>
+
+<body>
+    <h1>Images</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for image in images %}
+            <tr>
+                <td>{{ image.id }}</td>
+                <td>{{ image.name }}</td>
+                <td>
+                    <img src="{{ url_for('static', filename='uploads/' + image.image) }}" alt="{{ image.name }}"
+                        width="200">
+                </td>
+                <td>
+                    <a href="{{ url_for('download_image', image_id=image.id) }}">Download</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
